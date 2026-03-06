@@ -6,7 +6,7 @@ target_sources(${CMAKE_PROJECT_NAME}
     PRIVATE
         GPSManager.cc
         GPSManager.h
-        GPSProvider.cc
+        $<IF:$<BOOL:${QGC_GPS_PROVIDER_PATCH}>,${QGC_GPS_PROVIDER_PATCH},GPSProvider.cc>
         GPSProvider.h
         GPSRtk.cc
         GPSRtk.h

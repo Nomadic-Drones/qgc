@@ -471,6 +471,10 @@ elseif(ANDROID)
             # QT_ANDROID_SYSTEM_LIBS_PREFIX
     )
 
+    if(QGC_ANDROID_EXTRA_LIBS)
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES QT_ANDROID_EXTRA_LIBS "${QGC_ANDROID_EXTRA_LIBS}")
+    endif()
+
     # if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     #     set(QT_ANDROID_APPLICATION_ARGUMENTS)
     # endif()

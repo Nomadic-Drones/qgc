@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/custom/img">
+        <file alias="brand-indoor.svg">res/Images/brand-indoor.svg</file>
+        <file alias="brand-outdoor.svg">res/Images/brand-outdoor.svg</file>
+    </qresource>
+    <qresource prefix="/Custom/qml">
+        <file alias="QGroundControl/FlightDisplay/FlyViewCustomLayer.qml">src/FlyViewCustomLayer.qml</file>
+        <file alias="QGroundControl/AppSettings/SettingsPagesModel.qml">src/SettingsPagesModel.qml</file>
+        <file alias="QGroundControl/AppSettings/VideoSettings.qml">src/VideoSettings.qml</file>
+    </qresource>
+    <qresource prefix="/Custom/res">
+        <file alias="QGCLogoFull.svg">res/QGCLogoFull.svg</file>
+        <file alias="QGCLogoWhite.svg">res/icons/QGCLogoWhite.svg</file>
+        <file alias="qgroundcontrol.ico">res/icons/custom_qgroundcontrol.ico</file>
+    </qresource>
+</RCC>

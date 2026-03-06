@@ -75,6 +75,7 @@ ui_*
 
 # android
 android/local.properties
+android-sdk/
 *.class
 
 # doxygen
@@ -94,3 +95,7 @@ docs/.vitepress/dist/
 
 CMakeUserPresets.json
 cpm_modules
+
+# Qt SDK installed via aqt
+6.8.3/
+6.6.3/
