@@ -22,6 +22,7 @@ public:
     QQmlApplicationEngine *createQmlApplicationEngine(QObject *parent) final;
     QString brandImageIndoor() const final;
     QString brandImageOutdoor() const final;
+    void paletteOverride(const QString &colorName, QGCPalette::PaletteColorInfo_t& colorInfo) final;
 
 private:
     QQmlApplicationEngine *_qmlEngine = nullptr;
