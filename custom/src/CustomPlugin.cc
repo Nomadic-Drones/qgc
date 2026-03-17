@@ -5,6 +5,7 @@
 
 #include "AppSettings.h"
 #include "QGCLoggingCategory.h"
+#include "UnitsSettings.h"
 #include "VideoSettings.h"
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
@@ -45,6 +46,33 @@ bool CustomPlugin::adjustSettingMetaData(const QString &settingsGroup, FactMetaD
         return true;
     }
 
+    if (settingsGroup == UnitsSettings::settingsGroup) {
+        if (metaData.name() == UnitsSettings::horizontalDistanceUnitsName) {
+            metaData.setRawDefaultValue(UnitsSettings::HorizontalDistanceUnitsMeters);
+            return true;
+        }
+        if (metaData.name() == UnitsSettings::verticalDistanceUnitsName) {
+            metaData.setRawDefaultValue(UnitsSettings::VerticalDistanceUnitsMeters);
+            return true;
+        }
+        if (metaData.name() == UnitsSettings::areaUnitsName) {
+            metaData.setRawDefaultValue(UnitsSettings::AreaUnitsSquareMeters);
+            return true;
+        }
+        if (metaData.name() == UnitsSettings::speedUnitsName) {
+            metaData.setRawDefaultValue(UnitsSettings::SpeedUnitsMetersPerSecond);
+            return true;
+        }
+        if (metaData.name() == UnitsSettings::temperatureUnitsName) {
+            metaData.setRawDefaultValue(UnitsSettings::TemperatureUnitsCelsius);
+            return true;
+        }
+        if (metaData.name() == UnitsSettings::weightUnitsName) {
+            metaData.setRawDefaultValue(UnitsSettings::WeightUnitsKg);
+            return true;
+        }
+    }
+
     if (settingsGroup == VideoSettings::settingsGroup) {
         if (metaData.name() == VideoSettings::videoSourceName) {
             metaData.setRawDefaultValue(VideoSettings::videoSourceRTSP);
@@ -69,6 +97,24 @@ bool CustomPlugin::adjustSettingMetaData(const QString &settingsGroup, FactMetaD
 QString CustomPlugin::brandImageIndoor() const { return QStringLiteral("/custom/img/brand-indoor.svg"); }
 
 QString CustomPlugin::brandImageOutdoor() const { return QStringLiteral("/custom/img/brand-outdoor.svg"); }
+
+void CustomPlugin::paletteOverride(const QString &colorName, QGCPalette::PaletteColorInfo_t& colorInfo)
+{
+    // Nomadic brand navy from logo: #011D44
+    // Lighter accent blue for interactive elements
+    if (colorName == QStringLiteral("brandingPurple")) {
+        colorInfo[QGCPalette::Dark][QGCPalette::ColorGroupEnabled]   = QColor("#011D44");
+        colorInfo[QGCPalette::Dark][QGCPalette::ColorGroupDisabled]  = QColor("#011D44");
+        colorInfo[QGCPalette::Light][QGCPalette::ColorGroupEnabled]  = QColor("#011D44");
+        colorInfo[QGCPalette::Light][QGCPalette::ColorGroupDisabled] = QColor("#011D44");
+    }
+    else if (colorName == QStringLiteral("brandingBlue")) {
+        colorInfo[QGCPalette::Dark][QGCPalette::ColorGroupEnabled]   = QColor("#4A90D9");
+        colorInfo[QGCPalette::Dark][QGCPalette::ColorGroupDisabled]  = QColor("#4A90D9");
+        colorInfo[QGCPalette::Light][QGCPalette::ColorGroupEnabled]  = QColor("#1A6BBF");
+        colorInfo[QGCPalette::Light][QGCPalette::ColorGroupDisabled] = QColor("#1A6BBF");
+    }
+}
 
 QQmlApplicationEngine *CustomPlugin::createQmlApplicationEngine(QObject *parent) {
     _qmlEngine = QGCCorePlugin::createQmlApplicationEngine(parent);
