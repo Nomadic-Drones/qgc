@@ -51,6 +51,8 @@ public class QGCActivity extends QtActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        WallpaperSetup.applyOnce(this);
+
         nativeInit();
         acquireWakeLock();
         keepScreenOn();
